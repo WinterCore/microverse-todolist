@@ -27,20 +27,35 @@ class TodoUI {
         heading.textContent = todo.title;
         const content = document.createElement('p');
         content.textContent = todo.description;
+        const bottom = document.createElement('div');
+        bottom.classList.add('bottom');
+
         const date = document.createElement('div');
         date.classList.add('due-date');
         date.textContent = todo.dueDate;
 
+        const actions = document.createElement('div');
+        actions.classList.add('actions');
         const edit = document.createElement('button');
-        edit.textContent = 'Edit';
+        const editIcon = document.createElement('span');
+        editIcon.classList.add('material-icons');
+        editIcon.innerHTML = 'create';
+        edit.appendChild(editIcon);
         const remove = document.createElement('button');
-        remove.textContent = 'Delete';
+        const removeIcon = document.createElement('span');
+        removeIcon.classList.add('material-icons');
+        removeIcon.innerHTML = 'delete';
+        remove.appendChild(removeIcon);
+
+        actions.appendChild(edit);
+        actions.appendChild(remove);
+
+        bottom.appendChild(date);
+        bottom.appendChild(actions);
 
         container.appendChild(heading);
         container.appendChild(content);
-        container.appendChild(date);
-        container.appendChild(edit);
-        container.appendChild(remove);
+        container.appendChild(bottom);
 
         edit.addEventListener('click', () => this.editHandler(todo));
         remove.addEventListener('click', () => this.deleteHandler(todo));
