@@ -12,6 +12,13 @@ class TodoUI {
     constructor(onEdit: TodoClickHandler, onDelete: TodoClickHandler) {
         this.editHandler   = onEdit;
         this.deleteHandler = onDelete;
+
+        window.addEventListener('resize', () => {
+            const todos = $TODO_CONTAINER.querySelectorAll('.todo') as NodeListOf<HTMLDivElement>;
+            for (let todo of Array.from(todos)) {
+                todo.style.height = `${todo.getBoundingClientRect().width}px`;
+            }
+        });
     }
 
     setTitle(text: string) {
@@ -61,6 +68,11 @@ class TodoUI {
         remove.addEventListener('click', () => this.deleteHandler(todo));
 
         $TODO_CONTAINER.appendChild(container);
+
+        // Flush dom updates
+        container.offsetTop;
+
+        container.style.height = `${container.getBoundingClientRect().width}px`;
     }
 
     update(todo: Todo): void {
