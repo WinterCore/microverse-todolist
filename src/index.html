@@ -7,6 +7,50 @@
     <link rel="stylesheet" href="main.css" type="text/css" />
 </head>
 <body>
+    <div class="projects-outer">
+        <div id="projects">
 
+        </div>
+        <form id="project-form">
+            <input id="project-title" type="text" placeholder="Project name" />
+            <button>✓</button>
+        </form>
+    </div>
+    <div class="todo-outer">
+        <h1></h1>
+        <div id="todos">
+
+        </div>
+    </div>
+    <form id="todo-form">
+        <div class="input-group">
+            <label>Title</label>
+            <input id="todo-title" type="text" required />
+        </div>
+        <div class="input-group">
+            <label>Description</label>
+            <textarea id="todo-description" required></textarea>
+        </div>
+        <div class="input-group">
+            <label>Due Date</label>
+            <input id="todo-due-date" type="date" required />
+        </div>
+        <div class="input-group">
+            <div>Priority</div>
+            <div class="input-group">
+                <label for="todo-priority-high">High</label>
+                <input id="todo-priority-high" type="radio" name="priority" value="1" checked />
+            </div>
+            <div class="input-group">
+                <label for="todo-priority-medium">Medium</label>
+                <input id="todo-priority-medium"type="radio" name="priority" value="2" />
+            </div>
+            <div class="input-group">
+                <label for="todo-priority-low">Low</label>
+                <input id="todo-priority-low" type="radio" name="priority" value="3" />
+            </div>
+        </div>
+        <button>Save</button>
+    </form>
 </body>
 </html>
