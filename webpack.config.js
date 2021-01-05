@@ -31,6 +31,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: 'src/index.html',
+      minify: false
     }),
     new CopyPlugin({
       patterns: [{ from: 'public' }],
