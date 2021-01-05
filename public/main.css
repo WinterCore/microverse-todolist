@@ -6,19 +6,413 @@ html,
 body {
   margin: 0;
   min-height: 100vh;
+  font-family: Roboto, sans-serif;
+}
+
+body {
+  display: flex;
+}
+
+nav {
+  width: 100%;
+  max-width: 240px;
+  padding: 10px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  background: #fff;
+  z-index: 5;
+}
+
+main {
+  flex: 1;
+  background: #f6f8fa;
+  padding: 0 20px;
+  margin-left: 240px;
+}
+
+textarea {
+  resize: none;
+  font-family: Roboto, sans-serif;
+}
+
+button {
+  cursor: pointer;
+}
+
+#project-form {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.projects-outer {
+  padding: 10px;
+}
+
+button.transparent {
+  border: none;
+  padding: 0;
+  background: transparent;
+  outline: 0;
+}
+
+.material-icons {
+  color: #b2aec2;
+}
+
+.material-icons:hover {
+  color: #643fdb;
+}
+
+.add-todo .material-icons {
+  font-size: 24px;
+  color: #fff;
+  transition: color 300ms linear;
 }
 
 #projects {
-  padding: 20px;
-  border: 10px solid red;
+  margin: 10px 0;
+}
+
+.project {
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 14px;
+  margin: 5px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.project.active {
+  color: #5226d7;
+  background: #f7f8fa;
+  font-weight: bold;
+}
+
+.project:hover {
+  background: #f7f8fa;
+}
+
+.hamburger {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  cursor: pointer;
+}
+
+.hamburger .material-icons {
+  font-size: 34px;
+}
+
+.nav-section-heading {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  color: #333;
+}
+
+.nav-section-heading .material-icons {
+  margin-right: 8px;
+  color: #333;
+}
+
+.nav-section {
+  margin-left: 20px;
+}
+
+input.transparent {
+  border: none;
+  outline: 0;
+  padding: 3px 0;
+}
+
+.todo-outer h1 {
+  text-align: center;
 }
 
 #todos {
-  padding: 50px;
-  border: 10px solid blue;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  padding: 10px;
 }
 
+.todo {
+  border-radius: 20px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 12px;
+  transition: all 300ms cubic-bezier(0.25, 0.8, 0.25, 1);
+  cursor: pointer;
+  position: relative;
+}
 
-.todo.priority-1 { background: #FF9B73; }
-.todo.priority-2 { background: #B692FE; }
-.todo.priority-3 { background: #E4EE90; }
+.todo:hover {
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.16), 0 3px 8px rgba(0, 0, 0, 0.23);
+}
+
+.todo h2 {
+  margin: 0;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.todo p {
+  flex: 1;
+  overflow: hidden;
+}
+
+.todo .due-date {
+  font-size: 14px;
+  font-weight: 300;
+}
+
+.todo .bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.todo .actions {
+  display: flex;
+}
+
+.todo .todo-close {
+  position: absolute;
+  top: 10px;
+  right: 6px;
+  background: transparent;
+  border: none;
+  outline: 0;
+  display: none;
+}
+
+.todo.fullscreen .todo-close {
+  display: block;
+}
+
+.todo .todo-close .material-icons {
+  font-size: 28px;
+  color: #fff;
+}
+
+.todo .actions button .material-icons {
+  font-size: 18px;
+  color: #fff;
+  transition: color 300ms linear;
+}
+
+.todo .todo-close .material-icons:hover {
+  color: yellow;
+}
+
+.todo .actions button,
+.add-todo {
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  border: none;
+  outline: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  margin-left: 5px;
+  background: #161516;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  cursor: pointer;
+}
+
+.add-todo {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  width: 48px;
+  height: 48px;
+  display: none;
+  z-index: 15;
+}
+
+.add-todo.shown {
+  display: flex;
+}
+
+.todo .actions button:hover,
+.add-todo:hover {
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+.todo .actions button:hover .material-icons {
+  color: yellow;
+}
+
+.todo-form-art h2 {
+  margin: 0;
+}
+
+.todo.fullscreen {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  right: 20px;
+  bottom: 20px;
+  height: auto !important;
+  z-index: 15;
+}
+
+.todo.fullscreen p {
+  overflow: auto;
+}
+
+.todo.fullscreen h2 {
+  overflow: auto;
+  white-space: normal;
+  padding-right: 5px;
+}
+
+.todo.fullscreen:hover {
+  box-shadow: none;
+}
+
+.todo.priority-1,
+.swatch.high-swatch { background: #ff9b73; }
+
+.todo.priority-2,
+.swatch.medium-swatch { background: #b692fe; }
+
+.todo.priority-3,
+.swatch.low-swatch { background: #e4ee90; }
+
+.todo-form-outer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 20;
+  background: rgba(0, 0, 0, 0.4);
+  justify-content: center;
+  align-items: center;
+  display: none;
+}
+
+.todo-form-outer.shown {
+  display: flex;
+}
+
+.todo-form-inner {
+  background: #fff;
+  display: flex;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.todo-form-art {
+  background: #3c1f90;
+  padding: 25px;
+  color: #fff;
+  width: 200px;
+}
+
+.todo-form {
+  padding: 25px;
+  width: 400px;
+}
+
+.todo-form .action {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.todo-form .input-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 18px;
+}
+
+.input-group label {
+  font-size: 14px;
+}
+
+.input-group input[type="text"],
+.input-group input[type="date"],
+.input-group textarea {
+  margin-top: 5px;
+  border-radius: 3px;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  padding: 8px;
+  outline: 0;
+}
+
+.input-group input[type="text"]:focus,
+.input-group input[type="date"]:focus,
+.input-group textarea:focus {
+  border-color: #0c75ff;
+}
+
+input[type="radio"] {
+  margin: 0;
+  margin-right: 8px;
+}
+
+button.button {
+  padding: 16px 28px;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  background: #0c75ff;
+  color: #fff;
+  transition: background 200ms ease-in-out;
+}
+
+button.button:hover {
+  background: #3c1f90;
+}
+
+.radio-group {
+  display: flex;
+  align-items: center;
+  margin-top: 4px;
+}
+
+.radio-group label {
+  display: flex;
+  align-items: center;
+}
+
+.radio-group .swatch {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin-right: 8px;
+}
+
+.todo-form.shown {
+  display: block;
+}
+
+@media (max-width: 768px) {
+  nav {
+    transform: translateX(-240px);
+    transition: transform 300ms ease-in-out;
+  }
+
+  nav.open {
+    transform: translateX(0);
+  }
+
+  #hamburger.open {
+    left: 250px;
+  }
+
+  main {
+    margin-left: 0;
+  }
+}
