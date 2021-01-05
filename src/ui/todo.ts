@@ -16,7 +16,10 @@ class TodoUI {
         window.addEventListener('resize', () => {
             const todos = $TODO_CONTAINER.querySelectorAll('.todo') as NodeListOf<HTMLDivElement>;
             for (let todo of Array.from(todos)) {
-                todo.style.height = `${todo.getBoundingClientRect().width}px`;
+                if (todo.classList.contains('fullscreen'))
+                    todo.style.height = 'auto';
+                else
+                    todo.style.height = `${todo.getBoundingClientRect().width}px`;
             }
         });
     }
@@ -54,18 +57,40 @@ class TodoUI {
         removeIcon.innerHTML = 'delete';
         remove.appendChild(removeIcon);
 
+        const close = document.createElement('button');
+        const closeIcon = document.createElement('span');
+        close.classList.add('todo-close');
+        closeIcon.classList.add('material-icons');
+        closeIcon.innerHTML = 'close';
+        close.appendChild(closeIcon);
+
         actions.appendChild(edit);
         actions.appendChild(remove);
 
         bottom.appendChild(date);
         bottom.appendChild(actions);
 
+        container.appendChild(close);
         container.appendChild(heading);
         container.appendChild(content);
         container.appendChild(bottom);
 
-        edit.addEventListener('click', () => this.editHandler(todo));
-        remove.addEventListener('click', () => this.deleteHandler(todo));
+        container.addEventListener('click', () => container.classList.add('fullscreen'));
+
+        edit.addEventListener('click', (e) => {
+          e.stopPropagation();
+          this.editHandler(todo)
+        });
+
+        remove.addEventListener('click', (e) => {
+          e.stopPropagation();
+          this.deleteHandler(todo)
+        });
+
+        close.addEventListener('click', (e) => {
+          e.stopPropagation();
+          container.classList.remove('fullscreen')
+        });
 
         $TODO_CONTAINER.appendChild(container);
 
