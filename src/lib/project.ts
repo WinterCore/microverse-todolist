@@ -1,7 +1,7 @@
 import Todo from './todo';
 
 export type ProjectData = {
-  title : string;
+    title : string;
 };
 
 class Project {
