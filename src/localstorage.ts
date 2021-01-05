@@ -6,8 +6,7 @@ export const save = (data: Project[]) => {
 };
 
 export const get = (): Project[] => {
-    const data = window.localStorage.getItem('data');
-    if (!data) return [];
+    const data = window.localStorage.getItem('data') || '[]';
     let projects = [];
     for (let item of JSON.parse(data)) {
         const project = new Project(item.title);
