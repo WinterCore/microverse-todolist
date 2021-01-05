@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todolist</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="main.css" type="text/css" />
+</head>
+<body>
+    <div id="hamburger" class="hamburger"><span class="material-icons">menu</span></div>
+    <nav>
+        <div class="sidebar">
+            <h2>Todolist</h2>
+            <div class="projects-outer">
+                <h3 class="nav-section-heading"><span class="material-icons">folder</span>Projects</h3>
+                <div class="nav-section">
+                    <div id="projects">
+
+                    </div>
+                </div>
+                <form id="project-form">
+                    <input class="transparent" id="project-title" type="text" placeholder="Project name" required />
+                    <button class="transparent"><span class="material-icons">add</span></button>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <div id="add-todo" class="add-todo"><span class="material-icons">add</span></div>
+    <main>
+        <div class="todo-outer">
+            <h1></h1>
+            <div id="todos">
+
+            </div>
+        </div>
+    </main>
+    <div class="todo-form-outer">
+        <div class="todo-form-inner">
+            <div class="todo-form-art">
+                <h2>New Note</h2>
+            </div>
+            <form id="todo-form" class="todo-form">
+                <div class="input-group">
+                    <label>Title</label>
+                    <input id="todo-title" type="text" required />
+                </div>
+                <div class="input-group">
+                    <label>Description</label>
+                    <textarea id="todo-description" rows="5" required></textarea>
+                </div>
+                <div class="input-group">
+                    <label>Due Date</label>
+                    <input id="todo-due-date" type="date" required />
+                </div>
+                <div class="input-group priority">
+                    <label>Priority</label>
+                    <div class="radio-group">
+                        <input id="todo-priority-high" type="radio" name="priority" value="1" checked />
+                        <label for="todo-priority-high"><div class="swatch high-swatch"></div>High</label>
+                    </div>
+                    <div class="radio-group">
+                        <input id="todo-priority-medium"type="radio" name="priority" value="2" />
+                        <label for="todo-priority-medium"><div class="swatch medium-swatch"></div>Medium</label>
+                    </div>
+                    <div class="radio-group">
+                        <input id="todo-priority-low" type="radio" name="priority" value="3" />
+                        <label for="todo-priority-low"><div class="swatch low-swatch"></div>Low</label>
+                    </div>
+                </div>
+                <div class="action">
+                    <button class="button">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+<script src="172935d813dc10f942ec_bundle.js"></script></body>
+</html>
